@@ -14,8 +14,7 @@ class App extends React.Component{
     >
       <div
         style = {{
-	  flexGrow: '1',
-	  width: '100%'
+	  flexGrow: '1'
 	}}		  
       >
       </div>
