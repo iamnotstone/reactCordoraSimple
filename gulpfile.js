@@ -7,7 +7,7 @@ var path = require('path');
 var shell = require('gulp-shell')
 
 gulp.task('clean',function(){
-	del(['./www/js/*.js', './www/js/*.map', './www/css/*.css']);
+	del(['./www/js/*.js', './www/js/*.map']);
 
 });
 

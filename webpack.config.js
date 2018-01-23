@@ -54,24 +54,18 @@ module.exports = {
 			  umd: 'react-dom'
       },
 			
-		  'react-redux':{
+/*		  'react-redux':{
 			  root: 'ReactRedux',
 			  commonjs2: 'react-redux',
 			  commonjs: 'react-redux',
 			  amd: 'react-redux'
 		  },
-/*		  'rc-menu':{
-			  root: 'rc-menu',
-			  commonjs2: 'rc-menu',
-			  commonjs: 'rc-menu',
-			  amd: 'rc-menu'
-		  },	*/
 		  redux: {
 			  root: 'Redux',
 			  commonjs2: 'redux',
 			  commonjs: 'redux',
 			  amd: 'redux'
-		  },
+		  },*/
 		  three:{
 			  root:'THREE',
 			  commonjs2: 'three',
