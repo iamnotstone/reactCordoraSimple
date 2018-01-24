@@ -36,7 +36,7 @@ class FooterButton extends React.Component{
       <input 
         type = 'button'
 	      style = {{
-   	      background: 'url(' + backImg + ')' + 'no-repeat center ',
+   	      backgroundImage: 'url("' + backImg + '")' + 'no-repeat center ',
 	        backgroundColor: 'white',
 	        border: '0px',
 	        width: '100%',

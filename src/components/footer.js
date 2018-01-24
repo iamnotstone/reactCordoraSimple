@@ -23,7 +23,7 @@ class Footer extends React.Component{
 	        name = 'Home'
           inactiveImgUrl = './img/home_inactive.png'
           activeImgUrl = './img/home_active.png'
-          navLink = '/home'
+          navLink = '/'
 	      />
       </div>
       <div
