@@ -26,7 +26,6 @@ class FooterButton extends React.Component{
   render(){
     let backImg = this.props.isActive ? this.props.activeImgUrl: 
 		    this.props.inactiveImgUrl
-    console.log(backImg)
     return <div
   	  style = {{
 	      width: '100%',
@@ -36,7 +35,7 @@ class FooterButton extends React.Component{
       <input 
         type = 'button'
 	      style = {{
-   	      backgroundImage: 'url("' + backImg + '")' + 'no-repeat center ',
+   	      background: 'url("' + backImg + '")' + 'no-repeat center ',
 	        backgroundColor: 'white',
 	        border: '0px',
 	        width: '100%',

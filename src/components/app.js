@@ -18,13 +18,15 @@ class App extends React.Component{
         display: 'flex',
 	      flexDirection: 'column',
         height: '100%',
-	      width: '100%'
+	      width: '100%',
       }}		  
     >
       <div
         style = {{
 	        flexGrow: '1',
-	        width: '100%'
+	        width: '100%',
+          overflowY: 'hidden',
+          display: 'flex'
 	      }}		  
       >
         {this.props.children}

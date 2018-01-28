@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import SubAppEntrance from 'subAppEntrance'
+import SubAppEntrance from './subAppEntrance'
 
 class Desktop extends React.Component{
   static propTypes = {
@@ -21,16 +21,16 @@ class Desktop extends React.Component{
       return <div
           key = {key ++}
           style = {{
-	    flexWrap: 'wrap',
-	    boxSizing: 'border-box',
+	          boxSizing: 'border-box',
             padding: '2px',
-            width: this.desktopWidth / this.props.column - 1 + 'px',
-            height: this.desktopWidth / this.props.column - 1 + 'px',
-	  }}
+            width: this.desktopWidth / this.props.column + 'px',
+            height: this.desktopWidth / this.props.column + 12 + 'px',
+	        }}
         >
           <SubAppEntrance data = {content}/>
         </div>
     })
+    return result
   }
 
   componentDidMount(){
@@ -44,11 +44,12 @@ class Desktop extends React.Component{
     return <div
       style = {{
         display: 'flex',
-	margin: '0px',
+	      flexWrap: 'wrap',
+	      margin: '0px',
         width: '100%',
-        height: '100%',
         overflowX: 'hidden',
-        overflowY: 'scroll'
+        overflowY: 'auto',
+        flexGrow: '1'
       }}
       ref = {node => this.node = node}
     >
@@ -56,3 +57,5 @@ class Desktop extends React.Component{
     </div>
   }
 }
+
+export default Desktop
