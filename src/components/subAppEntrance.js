@@ -23,7 +23,6 @@ class SubAppEntrance extends React.Component{
   }
 
   _onImageTouchStart(){
-    console.log('touch start')
     this.setState({
       brightness: ' drop-shadow(8px 8px 10px gray)'
     })
@@ -36,6 +35,7 @@ class SubAppEntrance extends React.Component{
   }
 
   _onImageClick(){
+    this.props.history.push(this.props.data.navLink)
   }
 
   componentDidMount(){
@@ -44,7 +44,11 @@ class SubAppEntrance extends React.Component{
     this.img.addEventListener('click', this._onImageClick, false)
   }
 
-  
+  componentWillUnmount(){
+    this.img.removeEventListener('touchstart', this._onImageTouchStart)
+    this.img.removeEventListener('touchend', this._onImageTouchEnd)
+    this.img.removeEventListener('click', this._onImageClick)
+  }  
 
   render(){
     return <div

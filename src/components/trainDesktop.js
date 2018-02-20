@@ -5,7 +5,7 @@ const testContentList = [
   {
     icon: 'img/game.png',
     name: '静态靶训练',
-    navLink: 'train/game0',
+    navLink: 'train/static',
     para: {}
   },
 ]

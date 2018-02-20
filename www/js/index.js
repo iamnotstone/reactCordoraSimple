@@ -3267,7 +3267,7 @@ var _train = __webpack_require__(103);
 
 var _train2 = _interopRequireDefault(_train);
 
-var _user = __webpack_require__(107);
+var _user = __webpack_require__(109);
 
 var _user2 = _interopRequireDefault(_user);
 
@@ -5512,7 +5512,7 @@ var App = function (_React$Component) {
   }, {
     key: '_onBackButton',
     value: function _onBackButton() {
-      if (/#\/(train|user|home|)$/g.test(window.location.href)) navigator.app.exitApp();
+      if (/#\/(train|user|home|)$/g.test(window.location.href)) navigator.app.exitApp();else navigator.app.backHistory();
     }
   }, {
     key: 'render',
@@ -9329,6 +9329,10 @@ var _trainDesktop = __webpack_require__(104);
 
 var _trainDesktop2 = _interopRequireDefault(_trainDesktop);
 
+var _staticGame = __webpack_require__(107);
+
+var _staticGame2 = _interopRequireDefault(_staticGame);
+
 var _reactRouterDom = __webpack_require__(5);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -9363,6 +9367,7 @@ var Train = function (_React$Component) {
         _react2.default.createElement(
           _reactRouterDom.Switch,
           null,
+          _react2.default.createElement(_reactRouterDom.Route, { path: '/train/static', component: _staticGame2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { path: '/train', component: _trainDesktop2.default })
         )
       );
@@ -9406,7 +9411,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var testContentList = [{
   icon: 'img/game.png',
   name: '静态靶训练',
-  navLink: 'train/game0',
+  navLink: 'train/static',
   para: {}
 }];
 
@@ -9598,7 +9603,6 @@ var SubAppEntrance = function (_React$Component) {
   _createClass(SubAppEntrance, [{
     key: '_onImageTouchStart',
     value: function _onImageTouchStart() {
-      console.log('touch start');
       this.setState({
         brightness: ' drop-shadow(8px 8px 10px gray)'
       });
@@ -9612,13 +9616,22 @@ var SubAppEntrance = function (_React$Component) {
     }
   }, {
     key: '_onImageClick',
-    value: function _onImageClick() {}
+    value: function _onImageClick() {
+      this.props.history.push(this.props.data.navLink);
+    }
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.img.addEventListener('touchstart', this._onImageTouchStart, false);
       this.img.addEventListener('touchend', this._onImageTouchEnd, false);
       this.img.addEventListener('click', this._onImageClick, false);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.img.removeEventListener('touchstart', this._onImageTouchStart);
+      this.img.removeEventListener('touchend', this._onImageTouchEnd);
+      this.img.removeEventListener('click', this._onImageClick);
     }
   }, {
     key: 'render',
@@ -9692,6 +9705,178 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _fullScreen = __webpack_require__(108);
+
+var _fullScreen2 = _interopRequireDefault(_fullScreen);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var StaticGame = function (_React$Component) {
+  _inherits(StaticGame, _React$Component);
+
+  function StaticGame(props) {
+    _classCallCheck(this, StaticGame);
+
+    return _possibleConstructorReturn(this, (StaticGame.__proto__ || Object.getPrototypeOf(StaticGame)).call(this, props));
+  }
+
+  _createClass(StaticGame, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _fullScreen2.default,
+        null,
+        _react2.default.createElement(
+          'div',
+          {
+            style: {
+              margin: 'auto',
+              textAlign: 'center',
+              position: 'relative',
+              top: '30vh'
+            }
+          },
+          'StaticGame'
+        )
+      );
+    }
+  }]);
+
+  return StaticGame;
+}(_react2.default.Component);
+
+exports.default = StaticGame;
+
+/***/ }),
+/* 108 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var FullScreen = function (_React$Component) {
+  _inherits(FullScreen, _React$Component);
+
+  function FullScreen(props) {
+    _classCallCheck(this, FullScreen);
+
+    var _this = _possibleConstructorReturn(this, (FullScreen.__proto__ || Object.getPrototypeOf(FullScreen)).call(this, props));
+
+    _this._onBackClick = _this._onBackClick.bind(_this);
+    return _this;
+  }
+
+  _createClass(FullScreen, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.back.addEventListener('click', this._onBackClick, false);
+    }
+  }, {
+    key: '_onBackClick',
+    value: function _onBackClick() {
+      navigator.app.backHistory();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        'div',
+        {
+          style: {
+            width: '100vw',
+            height: '100vh',
+            backgroundColor: 'green',
+            zIndex: '9',
+            position: 'absolute'
+          }
+        },
+        _react2.default.createElement(
+          'div',
+          {
+            style: {
+              width: '50px',
+              height: '45px',
+              position: 'absolute',
+              zIndex: '10',
+              background: 'rgba(255,255,255,0)'
+            },
+            ref: function ref(node) {
+              return _this2.back = node;
+            }
+          },
+          _react2.default.createElement('img', {
+            src: 'img/back.png',
+            style: {
+              width: '20px',
+              height: '20px',
+              margin: 'auto',
+              display: 'block',
+              position: 'relative',
+              top: '10'
+            }
+          })
+        ),
+        this.props.children
+      );
+    }
+  }]);
+
+  return FullScreen;
+}(_react2.default.Component);
+
+exports.default = FullScreen;
+
+/***/ }),
+/* 109 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _itemBarButton = __webpack_require__(110);
+
+var _itemBarButton2 = _interopRequireDefault(_itemBarButton);
+
+var _itemBarContent = __webpack_require__(111);
+
+var _itemBarContent2 = _interopRequireDefault(_itemBarContent);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -9703,19 +9888,37 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var User = function (_React$Component) {
   _inherits(User, _React$Component);
 
-  function User() {
+  function User(props) {
     _classCallCheck(this, User);
 
-    return _possibleConstructorReturn(this, (User.__proto__ || Object.getPrototypeOf(User)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (User.__proto__ || Object.getPrototypeOf(User)).call(this, props));
+
+    _this.wechatLogin = _this.wechatLogin.bind(_this);
+    _this.nameClick = _this.nameClick.bind(_this);
+    return _this;
   }
 
   _createClass(User, [{
+    key: 'wechatLogin',
+    value: function wechatLogin() {}
+  }, {
+    key: 'nameClick',
+    value: function nameClick() {}
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
-        'User'
+        {
+          style: {
+            backgroundColor: '#eaeaea',
+            width: '100%',
+            height: '100%',
+            paddingTop: '8px'
+          }
+        },
+        _react2.default.createElement(_itemBarButton2.default, { title: '\u5FAE\u4FE1\u767B\u9646', onClick: this.wechatLogin }),
+        _react2.default.createElement(_itemBarContent2.default, { label: '\u6635\u79F0', content: '\u8DB3\u77E5\u8DB3\u4E0D\u77E5', onClick: this.nameClick })
       );
     }
   }]);
@@ -9724,6 +9927,314 @@ var User = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = User;
+
+/***/ }),
+/* 110 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ItemBarButton = function (_React$Component) {
+  _inherits(ItemBarButton, _React$Component);
+
+  function ItemBarButton(props) {
+    _classCallCheck(this, ItemBarButton);
+
+    var _this = _possibleConstructorReturn(this, (ItemBarButton.__proto__ || Object.getPrototypeOf(ItemBarButton)).call(this, props));
+
+    _this.onClick = _this.onClick.bind(_this);
+    _this.onTouchStart = _this.onTouchStart.bind(_this);
+    _this.onTouchEnd = _this.onTouchEnd.bind(_this);
+    _this.state = {
+      nodeColor: 'white'
+    };
+    return _this;
+  }
+
+  _createClass(ItemBarButton, [{
+    key: 'onClick',
+    value: function onClick() {
+      this.props.onClick();
+    }
+  }, {
+    key: 'onTouchStart',
+    value: function onTouchStart() {
+      this.setState({
+        nodeColor: 'darkgray'
+      });
+    }
+  }, {
+    key: 'onTouchEnd',
+    value: function onTouchEnd() {
+      this.setState({
+        nodeColor: 'white'
+      });
+    }
+  }, {
+    key: 'onTouchMove',
+    value: function onTouchMove(e) {
+      e.preventDefault();
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.node.addEventListener('touchstart', this.onTouchStart);
+      this.node.addEventListener('touchend', this.onTouchEnd);
+      this.node.addEventListener('click', this.onClick);
+      this.node.addEventListener('touchmove', this.onTouchMove);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.node.removeEventListener('touchstart', this.onTouchStart);
+      this.node.removeEventListener('touchend', this.onTouchEnd);
+      this.node.removeEventListener('click', this.onClick);
+      this.node.removeEventListener('touchmove', this.onTouchMove);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        'div',
+        {
+          style: {
+            boxSizing: 'border-box',
+            width: '100%',
+            height: '2.5rem',
+            borderBottom: '0px',
+            borderLeft: '0px',
+            borderRight: '0px',
+            borderTop: '0px',
+            marginLeft: '0px',
+            marginRight: '0px',
+            marginTop: '0px',
+            marginBottom: '0px',
+            textAlign: 'center',
+            backgroundColor: this.state.nodeColor
+          },
+          ref: function ref(node) {
+            return _this2.node = node;
+          }
+        },
+        _react2.default.createElement(
+          'span',
+          {
+            style: {
+              display: 'inline-block',
+              verticalAlign: 'middle',
+              lineHeight: '2.5rem',
+              fontSize: '1.2rem'
+            }
+          },
+          this.props.title
+        ),
+        _react2.default.createElement('hr', null)
+      );
+    }
+  }]);
+
+  return ItemBarButton;
+}(_react2.default.Component);
+
+ItemBarButton.propTypes = {
+  onClick: _propTypes2.default.func,
+  title: _propTypes2.default.string
+};
+exports.default = ItemBarButton;
+
+/***/ }),
+/* 111 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ItemBarContent = function (_React$Component) {
+  _inherits(ItemBarContent, _React$Component);
+
+  function ItemBarContent(props) {
+    _classCallCheck(this, ItemBarContent);
+
+    var _this = _possibleConstructorReturn(this, (ItemBarContent.__proto__ || Object.getPrototypeOf(ItemBarContent)).call(this, props));
+
+    _this.onClick = _this.onClick.bind(_this);
+    _this.onTouchStart = _this.onTouchStart.bind(_this);
+    _this.onTouchEnd = _this.onTouchEnd.bind(_this);
+    _this.state = {
+      nodeColor: 'white'
+    };
+    return _this;
+  }
+
+  _createClass(ItemBarContent, [{
+    key: 'onClick',
+    value: function onClick() {
+      this.props.onClick();
+    }
+  }, {
+    key: 'onTouchStart',
+    value: function onTouchStart() {
+      this.setState({
+        nodeColor: 'darkgray'
+      });
+    }
+  }, {
+    key: 'onTouchEnd',
+    value: function onTouchEnd() {
+      this.setState({
+        nodeColor: 'white'
+      });
+    }
+  }, {
+    key: 'onTouchMove',
+    value: function onTouchMove(e) {
+      e.preventDefault();
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.node.addEventListener('touchstart', this.onTouchStart);
+      this.node.addEventListener('touchend', this.onTouchEnd);
+      this.node.addEventListener('click', this.onClick);
+      this.node.addEventListener('touchmove', this.onTouchMove);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.node.removeEventListener('touchstart', this.onTouchStart);
+      this.node.removeEventListener('touchend', this.onTouchEnd);
+      this.node.removeEventListener('click', this.onClick);
+      this.node.removeEventListener('touchmove', this.onTouchMove);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        'div',
+        {
+          style: {
+            boxSizing: 'border-box',
+            width: '100%',
+            height: '2.5rem',
+            borderBottom: '0px',
+            borderLeft: '0px',
+            borderRight: '0px',
+            borderTop: '0px',
+            marginLeft: '0px',
+            marginRight: '0px',
+            marginTop: '0px',
+            marginBottom: '0px',
+            textAlign: 'center',
+            backgroundColor: this.state.nodeColor
+          },
+          ref: function ref(node) {
+            return _this2.node = node;
+          }
+        },
+        _react2.default.createElement(
+          'table',
+          {
+            style: {
+              boxSizing: 'border-box',
+              border: '0px',
+              width: '100%',
+              height: '100%',
+              paddingLeft: '8px',
+              paddingRight: '8px'
+            }
+          },
+          _react2.default.createElement(
+            'tbody',
+            null,
+            _react2.default.createElement(
+              'tr',
+              {
+                style: {
+                  border: '0px',
+                  textAlign: 'left'
+                }
+              },
+              _react2.default.createElement(
+                'td',
+                null,
+                this.props.label
+              ),
+              _react2.default.createElement(
+                'td',
+                {
+                  style: {
+                    border: '0px',
+                    textAlign: 'right'
+                  }
+                },
+                this.props.content
+              )
+            )
+          )
+        ),
+        _react2.default.createElement('hr', null)
+      );
+    }
+  }]);
+
+  return ItemBarContent;
+}(_react2.default.Component);
+
+ItemBarContent.propTypes = {
+  onClick: _propTypes2.default.func,
+  label: _propTypes2.default.string,
+  content: _propTypes2.default.string
+};
+exports.default = ItemBarContent;
 
 /***/ })
 /******/ ]);

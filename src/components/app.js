@@ -10,6 +10,8 @@ class App extends React.Component{
   _onBackButton(){
     if(/#\/(train|user|home|)$/g.test(window.location.href))
       navigator.app.exitApp()
+    else
+      navigator.app.backHistory() 
   }
 
   render(){

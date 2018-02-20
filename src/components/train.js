@@ -1,5 +1,6 @@
 import React from 'react'
 import TrainDesktop from './trainDesktop'
+import StaticGame from './staticGame'
 import {Switch, Route} from 'react-router-dom'
 
 class Train extends React.Component{
@@ -12,6 +13,7 @@ class Train extends React.Component{
         }}
       >
       <Switch>
+        <Route path = '/train/static' component = {StaticGame}/>
         <Route path = '/train' component = {TrainDesktop}/>
       </Switch>
     </div>
